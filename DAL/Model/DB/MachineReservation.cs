@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Model
 {
@@ -7,7 +8,7 @@ namespace DAL.Model
 
     public class MachineReservation
     {
-        [Key]
+        [ForeignKey("Transaction")]
         public Guid MachineReservationID { get; set; }
 
         public DateTime RequestDate { get; set; }
@@ -18,12 +19,13 @@ namespace DAL.Model
 
         public string ConsumerID { get; set; }
 
-        public Guid MachineID { get; set; }
-
         public MachineReservationStatus Status { get; set; }
 
-        public Guid TransactionID { get; set; }
-
         public bool IsDeleted { get; set; }
+
+        public Guid MachineID { get; set; }
+        public Machine Machine { get; set; }
+
+        public virtual Transaction Transaction { get; set; }
     }
 }

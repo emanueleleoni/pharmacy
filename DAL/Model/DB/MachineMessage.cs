@@ -10,8 +10,6 @@ namespace DAL.Model
         [Key]
         public Guid MachineMessageID { get; set; }
 
-        public Guid MachineID { get; set; }
-
         public DateTime Date { get; set; }
 
         public Author AuthorType { get; set; }
@@ -19,5 +17,7 @@ namespace DAL.Model
         public string Message { get; set; }
 
         public string MessageType { get; set; }
+        public Guid MachineID { get; set; }
+        public Machine Machine { get; set; }
     }
 }

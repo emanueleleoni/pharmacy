@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Model
@@ -16,5 +17,7 @@ namespace DAL.Model
         public string Province { get; set; }
         public string City { get; set; }
         public string PostalCode { get; set; }
+
+        public ICollection<Transaction> Transactions { get; set; }
     }
 }

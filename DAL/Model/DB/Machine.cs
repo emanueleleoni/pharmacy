@@ -21,5 +21,11 @@ namespace DAL.Model
         public DateTime? LastUpdate { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public ICollection<MachineError> MachineErrors { get; set; }
+        public ICollection<MachineMessage> MachineMessages { get; set; }
+        public ICollection<MachineReservation> MachineReservations { get; set; }
+        public ICollection<Stock> Stocks { get; set; }
+        public ICollection<Transaction> Transactions { get; set; }
     }
 }

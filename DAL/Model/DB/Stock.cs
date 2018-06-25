@@ -12,12 +12,14 @@ namespace DAL.Model
         [Key]
         public Guid StockID { get; set; }
 
-        public Guid MachineID { get; set; }
-
-        public Guid ProductID { get; set; }
-
         public int MachineKeyBoardNumber { get; set; }
 
         public int Quantity { get; set; }
+
+        public Guid MachineID { get; set; }
+        public Machine Machine { get; set; }
+
+        public Guid ProductID { get; set; }
+        public Product Product { get; set; }
     }
 }

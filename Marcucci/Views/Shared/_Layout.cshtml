@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Khareedo.pk | @ViewBag.Title</title>
+    <title>Dr.Plus | @ViewBag.Title</title>
     @Styles.Render("~/Content/css")
 
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
@@ -19,7 +19,7 @@
     <script type="text/javascript">
         $(function () {
             $("#searchTxtBox").autocomplete({
-                source: '@Url.Action("GetProducts","Product")'
+                source: '@Url.Action("GetProducts", "Product")'
             });
         });
     </script>
@@ -71,26 +71,9 @@
                             </div>
                             <!-- / header top left -->
                             <div class="aa-header-top-right">
-                                <ul class="aa-head-top-nav-right">
-
-                                    <li><a href="@(Session["username"] != null ? Url.Action("Index", "Account") : Url.Action("Login", "Account"))">My Account</a></li>
-                                        <li class="hidden-xs">
-                                        <a href="@(Session["username"] != null ? Url.Action("Index", "MyCart") : Url.Action("Login", "Account"))">
-                                            My Cart @if (@ViewBag.NoOfItem > 0)
-                                            {<text>(@ViewBag.NoOfItem)</text>}
-                                        </a>
-                                    </li>
-                                    <li class="hidden-xs"><a href="@(Session["username"] != null ? Url.Action("Index", "CheckOut") : Url.Action("Login", "Account"))">Checkout</a></li>
-                                    @if (Session["username"] == null)
-                                    {
-                                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                                    }
-                                    else
-                                    {
-                                        <li><a href="@Url.Action("Logout","Account")">Logout</a></li>
-                                        <li><a href="">@Session["username"]</a></li>
-                                    }
-                                </ul>
+                                @{ 
+                                    Html.RenderPartial("_LoginPartial");
+                                }
                             </div>
                         </div>
                     </div>
@@ -121,7 +104,7 @@
                             <div class="aa-cartbox">
                                 <a class="aa-cart-link" href="#">
                                     <span class="fa fa-shopping-basket"></span>
-                                    <span class="aa-cart-title">SHOPPING CART</span>
+                                    <span class="aa-cart-title">CARRELLO</span>
                                     <span class="aa-cart-notify">@(ViewBag.NoOfItem == null ? 0 : ViewBag.NoOfItem)</span>
                                 </a>
                                 <div class="aa-cartbox-summary">
@@ -129,7 +112,6 @@
                                         @if (Session["username"] != null)
                                         {
                                             Html.RenderPartial("_CartBox");
-
                                         }
                                     </ul>
                                     <a class="aa-cartbox-checkout aa-primary-btn" href="@Url.Action("Index","CheckOut")">Checkout</a>
@@ -139,7 +121,7 @@
                             <!-- search box -->
                             <div class="aa-search-box">
                                 <form action="@Url.Action("Search","Product")" method="get">
-                                    <input type="text" name="product" id="searchTxtBox" placeholder="Search product here . . . ">
+                                    <input type="text" name="product" id="searchTxtBox" placeholder="Cerca . . . ">
                                     <button type="submit"><span class="fa fa-search"></span></button>
                                 </form>
                             </div>
@@ -170,6 +152,17 @@
                         <!-- Left nav -->
                         <ul class="nav navbar-nav">
                             <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                            @{
+                                var db = new DAL.Context.ApplicationDbContext();
+                                var Categories = db.Categories.ToList();
+                                foreach (var nav in Categories)
+                                {
+                                    <li><a href="@Url.Action("GetProductsByCategory","Product", new { categoryName = nav.Name.Trim() })">@nav.Name.Trim()</a></li>
+                                }
+                            }
+
+                            <li><a href="@Url.Action("About","Home")">Chi siamo</a></li>
+                            <li><a href="@Url.Action("Contact","Home")">Contatti</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -186,11 +179,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="aa-subscribe-area">
-                        <h3>Subscribe our newsletter </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, velit!</p>
+                        <h3>Iscriviti alla nostra newsletter</h3>
+                        <p>Rimani aggiornato su tutte le nostre promozioni!</p>
                         <form action="" class="aa-subscribe-form">
-                            <input type="email" name="" id="" placeholder="Enter your Email">
-                            <input type="submit" value="Subscribe">
+                            <input type="email" name="" id="" placeholder="Inserisci la tua Email">
+                            <input type="submit" value="Iscriviti">
                         </form>
                     </div>
                 </div>

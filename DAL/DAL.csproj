@@ -76,11 +76,12 @@
   <ItemGroup>
     <Compile Include="Context\ApplicationContext.cs" />
     <Compile Include="Global.cs" />
-    <Compile Include="Migrations\201806221134103_CreateDatabase.cs" />
-    <Compile Include="Migrations\201806221134103_CreateDatabase.Designer.cs">
-      <DependentUpon>201806221134103_CreateDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201806251117154_CreateDb.cs" />
+    <Compile Include="Migrations\201806251117154_CreateDb.Designer.cs">
+      <DependentUpon>201806251117154_CreateDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\DB\Category.cs" />
     <Compile Include="Model\DB\DeletedApplicationUser.cs" />
     <Compile Include="Model\DB\ApplicationUser.cs" />
     <Compile Include="Model\DB\Error.cs" />
@@ -100,8 +101,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806221134103_CreateDatabase.resx">
-      <DependentUpon>201806221134103_CreateDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201806251117154_CreateDb.resx">
+      <DependentUpon>201806251117154_CreateDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

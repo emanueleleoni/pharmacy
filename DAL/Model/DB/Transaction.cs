@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Model
@@ -15,14 +16,6 @@ namespace DAL.Model
         public Guid TransactionID { get; set; }
 
         public DateTime TransactionDate { get; set; }
-
-        public Guid ProductID { get; set; }
-
-        public Guid ShippingID { get; set; }
-
-        public Guid? MachineReservationID { get; set; }
-
-        public Guid? MachineID { get; set; }
 
         public double TotalAmount { get; set; }
 
@@ -48,6 +41,17 @@ namespace DAL.Model
 
         public string Notes { get; set; }
 
-        public TransactionDetail TransactionDetail { get; set; }
+        public virtual TransactionDetail TransactionDetail { get; set; }
+
+        public Guid ProductID { get; set; }
+        public Product Product { get; set; }
+
+        public Guid ShippingID { get; set; }
+        public ShippingDetail ShippingDetail { get; set; }
+
+        public virtual MachineReservation MachineReservation { get; set; }
+
+        public Guid? MachineID { get; set; }
+        public Machine Machine { get; set; }
     }
 }

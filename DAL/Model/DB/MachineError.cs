@@ -10,12 +10,13 @@ namespace DAL.Model
         [Key]
         public Guid ErrorID { get; set; }
 
-        public Guid MachineID { get; set; }
-
         public DateTime Date { get; set; }
 
         public string Message { get; set; }
 
         public MachineErrorLevel Level { get; set; }
+
+        public Guid MachineID { get; set; }
+        public Machine Machine { get; set; }
     }
 }

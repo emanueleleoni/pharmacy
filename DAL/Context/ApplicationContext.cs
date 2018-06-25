@@ -49,6 +49,85 @@ namespace DAL.Context
         public DbSet<DeletedApplicationUser> DeletedUsers { get; set; }
 
         public DbSet<ShippingDetail> ShippingDetails { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            // configures one-to-many relationship
+            // Category può avere più prodotti e Product appartiene ad una categoria
+            modelBuilder.Entity<Product>()
+                .HasRequired<Category>(s => s.Category)
+                .WithMany(g => g.Products)
+                .HasForeignKey<Guid>(s => s.CategoryID);
+
+            // Machine può avere più errori 
+            modelBuilder.Entity<MachineError>()
+                .HasRequired<Machine>(s => s.Machine)
+                .WithMany(g => g.MachineErrors)
+                .HasForeignKey<Guid>(s => s.MachineID);
+
+            // Machine può avere più messaggi
+            modelBuilder.Entity<MachineMessage>()
+                .HasRequired<Machine>(s => s.Machine)
+                .WithMany(g => g.MachineMessages)
+                .HasForeignKey<Guid>(s => s.MachineID);
+
+            // Machine può avere più prenotazioni
+            modelBuilder.Entity<MachineReservation>()
+                .HasRequired<Machine>(s => s.Machine)
+                .WithMany(g => g.MachineReservations)
+                .HasForeignKey<Guid>(s => s.MachineID);
+
+            // Machine può avere più stocks
+            modelBuilder.Entity<Stock>()
+                .HasRequired<Machine>(s => s.Machine)
+                .WithMany(g => g.Stocks)
+                .HasForeignKey<Guid>(s => s.MachineID);
+
+            // Product può avere più stocks
+            modelBuilder.Entity<Stock>()
+                .HasRequired<Product>(s => s.Product)
+                .WithMany(g => g.Stocks)
+                .HasForeignKey<Guid>(s => s.ProductID);
+
+            // Product può essere associato a più transazioni
+            modelBuilder.Entity<Transaction>()
+                .HasRequired<Product>(s => s.Product)
+                .WithMany(g => g.Transactions)
+                .HasForeignKey<Guid>(s => s.ProductID);
+
+            // ShippingDetail può essere associato a più transazioni
+            modelBuilder.Entity<Transaction>()
+                .HasRequired<ShippingDetail>(s => s.ShippingDetail)
+                .WithMany(g => g.Transactions)
+                .HasForeignKey<Guid>(s => s.ShippingID);
+
+            // Machine può avere più transazioni
+            modelBuilder.Entity<Transaction>()
+                .HasOptional<Machine>(s => s.Machine)
+                .WithMany(g => g.Transactions)
+                .HasForeignKey<Guid?>(s => s.MachineID);
+
+            // Product può essere associato a più TransactionDetail
+            modelBuilder.Entity<TransactionDetail>()
+                .HasRequired<Product>(s => s.Product)
+                .WithMany(g => g.TransactionDetails)
+                .HasForeignKey<Guid>(s => s.ProductID);
+
+            // Configure one-to-one relationship
+            // Transaction può avere un dettaglio
+            modelBuilder.Entity<Transaction>()
+                        .HasOptional(s => s.TransactionDetail) 
+                        .WithRequired(ad => ad.Transaction);
+
+            // Transaction può avere una MachineReservation
+            modelBuilder.Entity<Transaction>()
+                        .HasOptional(s => s.MachineReservation)
+                        .WithRequired(ad => ad.Transaction);
+        }
     }
 
     public class MyConfiguration : DbConfiguration

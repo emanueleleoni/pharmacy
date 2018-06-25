@@ -3,14 +3,19 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Salve " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Disconnetti</a></li>
-    </ul>
+<ul class="aa-head-top-nav-right">
+    <li>
+        @Html.ActionLink("Salve " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+    </li>
+    <li class="hidden-xs">
+        <a href="@Url.Action("Index", "MyCart")">Carrello @if (@ViewBag.NoOfItem > 0)
+        {<text>(@ViewBag.NoOfItem)</text>} </a>
+    </li>
+    <li class="hidden-xs"><a href="@Url.Action("Index", "CheckOut")">Checkout</a></li>
+    <li><a href="javascript:document.getElementById('logoutForm').submit()">Disconnetti</a></li>
+</ul>
     }
 }
 else
