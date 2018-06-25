@@ -1,0 +1,17 @@
+﻿@model DAL.Model.Product
+<li>
+    <figure>
+        <a class="aa-product-img" href="@Url.Action("ViewDetails", "Product", new { id = Model.ProductID })">
+            <img width="100%" src="@Model.ImageUrl" alt="@Model.Name">
+        </a>
+        <a class="aa-add-card-btn" href="@(Session["username"] != null ? Url.Action("AddToCart", "Product", new { id = @Model.ProductID}) : Url.Action("Login", "Account"))"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+        <figcaption>
+            <h4 class="aa-product-title"><a href="#">@Model.Name</a></h4>
+            <span class="aa-product-price">Rs. @Model.Price</span><span class="aa-product-old-price"></span>
+        </figcaption>
+    </figure>
+    <div class="aa-product-hvr-content">
+        <a href="@Url.Action("ViewDetails", "Product", new { id = Model.ProductID })" title="View Details" data-toggle="tooltip" data-placement="top"><span class="fa fa-info"></span></a>
+    </div>
+</li>
+
