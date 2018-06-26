@@ -39,7 +39,6 @@ namespace DAL.Model
         public Category Category { get; set; }
 
         public ICollection<Stock> Stocks { get; set; }
-        public ICollection<Transaction> Transactions { get; set; }
         public ICollection<TransactionDetail> TransactionDetails { get; set; }
     }
 }

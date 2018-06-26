@@ -33,18 +33,15 @@ namespace DAL.Model
 
         public bool Shipped { get; set; }
 
-        public DateTime ShippingDate { get; set; }
+        public DateTime? ShippingDate { get; set; }
 
         public bool Delivered { get; set; }
 
-        public DateTime DeliveryDate { get; set; }
+        public DateTime? DeliveryDate { get; set; }
 
         public string Notes { get; set; }
 
         public virtual TransactionDetail TransactionDetail { get; set; }
-
-        public Guid ProductID { get; set; }
-        public Product Product { get; set; }
 
         public Guid ShippingID { get; set; }
         public ShippingDetail ShippingDetail { get; set; }

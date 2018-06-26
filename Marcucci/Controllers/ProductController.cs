@@ -76,18 +76,19 @@ namespace Marcucci.Controllers
         //ADD TO CART
         public ActionResult AddToCart(Guid id)
         {
+            var product = db.Products.Find(id);
             var OD = new TransactionDetail();
             OD.ProductID = id;
             int Qty = 1;
-            var price = db.Products.Find(id).Price;
+            var price = product.Price;
             OD.Quantity = Qty;
             OD.UnitPrice = price;
             OD.TotalAmount = Qty * price;
-
+            OD.Product = product;
+            
             if (TempShpData.items == null)
-            {
                 TempShpData.items = new List<TransactionDetail>();
-            }
+
             TempShpData.items.Add(OD);
             //AddRecentViewProduct(id);
 

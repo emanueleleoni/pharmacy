@@ -109,9 +109,8 @@
                                 </a>
                                 <div class="aa-cartbox-summary">
                                     <ul>
-                                        @if (Session["username"] != null)
-                                        {
-                                            Html.RenderPartial("_CartBox");
+                                        @{ 
+                                           Html.RenderPartial("_CartBox");
                                         }
                                     </ul>
                                     <a class="aa-cartbox-checkout aa-primary-btn" href="@Url.Action("Index","CheckOut")">Checkout</a>
@@ -202,26 +201,22 @@
                             <div class="row">
                                 <div class="col-md-3 col-sm-6">
                                     <div class="aa-footer-widget">
-                                        <h3>Main Menu</h3>
+                                        <h3>Menu</h3>
                                         <ul class="aa-footer-nav">
                                             <li><a href="#">Home</a></li>
-                                            <li><a href="#">Our Services</a></li>
-                                            <li><a href="#">Our Products</a></li>
-                                            <li><a href="#">About Us</a></li>
-                                            <li><a href="#">Contact Us</a></li>
+                                            <li><a href="#">Prodotti</a></li>
+                                            <li><a href="#">Chi siamo</a></li>
+                                            <li><a href="#">Contattaci</a></li>
                                         </ul>
                                     </div>
                                 </div>
                                 <div class="col-md-3 col-sm-6">
                                     <div class="aa-footer-widget">
                                         <div class="aa-footer-widget">
-                                            <h3>Knowledge Base</h3>
+                                            <h3>Servizi</h3>
                                             <ul class="aa-footer-nav">
-                                                <li><a href="#">Delivery</a></li>
-                                                <li><a href="#">Returns</a></li>
-                                                <li><a href="#">Services</a></li>
-                                                <li><a href="#">Discount</a></li>
-                                                <li><a href="#">Special Offer</a></li>
+                                                <li><a href="#">Spedizione</a></li>
+                                                <li><a href="#">Reso</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -229,12 +224,9 @@
                                 <div class="col-md-3 col-sm-6">
                                     <div class="aa-footer-widget">
                                         <div class="aa-footer-widget">
-                                            <h3>Useful Links</h3>
+                                            <h3>Links</h3>
                                             <ul class="aa-footer-nav">
-                                                <li><a href="#">Site Map</a></li>
-                                                <li><a href="#">Search</a></li>
-                                                <li><a href="#">Advanced Search</a></li>
-                                                <li><a href="#">Suppliers</a></li>
+                                                <li><a href="#">Cerca</a></li>
                                                 <li><a href="#">FAQ</a></li>
                                             </ul>
                                         </div>
@@ -243,11 +235,11 @@
                                 <div class="col-md-3 col-sm-6">
                                     <div class="aa-footer-widget">
                                         <div class="aa-footer-widget">
-                                            <h3>Contact Us</h3>
+                                            <h3>Contatti</h3>
                                             <address>
-                                                <p>Suit#007, Sharae Faisal ,Karachi</p>
-                                                <p><span class="fa fa-phone"></span>021-6558-6588</p>
-                                                <p><span class="fa fa-envelope"></span>help@Khareedo.com.pk</p>
+                                                <p>Farmacia Pagita - Corso Vittorio Veneto 54, 83040 - Andretta (AV)</p>
+                                                <p><span class="fa fa-phone"></span>0827/1916186</p>
+                                                <p><span class="fa fa-envelope"></span>pagitasrl@pec.it</p>
                                             </address>
                                             <div class="aa-footer-social">
                                                 <a href="#"><span class="fa fa-facebook"></span></a>

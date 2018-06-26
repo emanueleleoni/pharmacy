@@ -16,9 +16,8 @@ namespace Marcucci.Controllers
         public static List<TransactionDetail> GetDefaultData(this ControllerBase controller)
         {
             if (TempShpData.items == null)
-            {
                 TempShpData.items = new List<TransactionDetail>();
-            }
+
             var data = TempShpData.items.ToList();
 
             controller.ViewBag.cartBox  = data.Count == 0 ? null : data;

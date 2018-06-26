@@ -1,10 +1,13 @@
 namespace DAL.Migrations
 {
+    using DAL.Model;
     using DataAccess;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using System;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
-    using System.Linq; 
+    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<DAL.Context.ApplicationDbContext>
     {
@@ -50,6 +53,28 @@ namespace DAL.Migrations
                 var user = new ApplicationUser() { UserName = "consumer2@pagita.com", Email = "consumer2@pagita.com", EmailConfirmed = true };
                 userManager.Create(user, "Password1");
                 userManager.AddToRole(user.Id, RuoliUtente.consumer);
+            }
+
+            if (!context.Categories.Any())
+            {
+                context.Categories.AddRange(
+                new List<Category>() {
+                    new Category {
+                        CategoryID = Guid.NewGuid(),
+                        Description = "Farmaci",
+                        Name = "Farmaci"
+                    },
+                    new Category {
+                        CategoryID = Guid.NewGuid(),
+                        Description = "Altri prodotti",
+                        Name = "Altri prodotti"
+                    }
+                });
+            }
+
+            if (!context.Products.Any())
+            {
+
             }
         }
     }

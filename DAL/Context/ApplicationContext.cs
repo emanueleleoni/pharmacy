@@ -93,12 +93,6 @@ namespace DAL.Context
                 .WithMany(g => g.Stocks)
                 .HasForeignKey<Guid>(s => s.ProductID);
 
-            // Product può essere associato a più transazioni
-            modelBuilder.Entity<Transaction>()
-                .HasRequired<Product>(s => s.Product)
-                .WithMany(g => g.Transactions)
-                .HasForeignKey<Guid>(s => s.ProductID);
-
             // ShippingDetail può essere associato a più transazioni
             modelBuilder.Entity<Transaction>()
                 .HasRequired<ShippingDetail>(s => s.ShippingDetail)

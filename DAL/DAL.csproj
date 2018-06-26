@@ -80,6 +80,14 @@
     <Compile Include="Migrations\201806251117154_CreateDb.Designer.cs">
       <DependentUpon>201806251117154_CreateDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806261555391_DatetimeNull.cs" />
+    <Compile Include="Migrations\201806261555391_DatetimeNull.Designer.cs">
+      <DependentUpon>201806261555391_DatetimeNull.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806261601463_RemoveProduct.cs" />
+    <Compile Include="Migrations\201806261601463_RemoveProduct.Designer.cs">
+      <DependentUpon>201806261601463_RemoveProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DB\Category.cs" />
     <Compile Include="Model\DB\DeletedApplicationUser.cs" />
@@ -103,6 +111,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201806251117154_CreateDb.resx">
       <DependentUpon>201806251117154_CreateDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806261555391_DatetimeNull.resx">
+      <DependentUpon>201806261555391_DatetimeNull.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806261601463_RemoveProduct.resx">
+      <DependentUpon>201806261601463_RemoveProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
