@@ -88,14 +88,14 @@ namespace Marcucci.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessageResourceName = "ErrorStrongPassword", MinimumLength = 6)]
+        [StringLength(100, ErrorMessageResourceName = "ErrorStrongPassword", ErrorMessageResourceType = typeof(LocalResource.Resource), MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "ConfirmPassword")]
-        [Compare("Password", ErrorMessageResourceName = "ErrorThePasswordAndConfirmation")]
+        [Compare("Password", ErrorMessageResourceName = "ErrorThePasswordAndConfirmation", ErrorMessageResourceType = typeof(LocalResource.Resource))]
         public string ConfirmPassword { get; set; }
 
         public string CompanyName { get; set; }

@@ -212,6 +212,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="LocalResource\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TempShpData.cs" />
@@ -220,26 +225,17 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\css\bootstrap.css" />
-    <Content Include="Content\css\font-awesome.css" />
-    <Content Include="Content\css\jquery.simpleLens.css" />
-    <Content Include="Content\css\jquery.smartmenus.bootstrap.css" />
-    <Content Include="Content\css\nouislider.css" />
-    <Content Include="Content\css\sequence-theme.modern-slide-in.css" />
-    <Content Include="Content\css\slick.css" />
-    <Content Include="Content\css\style.css" />
-    <Content Include="Content\css\theme-color\bridge-theme.css" />
-    <Content Include="Content\css\theme-color\dark-red-theme.css" />
-    <Content Include="Content\css\theme-color\default-theme.css" />
-    <Content Include="Content\css\theme-color\green-theme.css" />
-    <Content Include="Content\css\theme-color\lite-blue-theme.css" />
-    <Content Include="Content\css\theme-color\orange-theme.css" />
-    <Content Include="Content\css\theme-color\pink-theme.css" />
-    <Content Include="Content\css\theme-color\purple-theme.css" />
-    <Content Include="Content\css\theme-color\red-theme.css" />
-    <Content Include="Content\css\theme-color\yellow-theme.css" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\img\close-icon.png" />
     <Content Include="Content\img\electronics\electronic-1.png" />
     <Content Include="Content\img\electronics\electronic-2.png" />
@@ -259,7 +255,9 @@
     <Content Include="Content\img\fashion\fashion-header-bg-8.jpg" />
     <Content Include="Content\img\flag\english.jpg" />
     <Content Include="Content\img\flag\french.jpg" />
+    <Content Include="Content\img\flag\italy.gif" />
     <Content Include="Content\img\logo.jpg" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\man-small-1.jpg" />
     <Content Include="Content\img\man\polo-shirt-1.png" />
     <Content Include="Content\img\man\polo-shirt-2.png" />
@@ -268,7 +266,22 @@
     <Content Include="Content\img\man\polo-shirt-5.png" />
     <Content Include="Content\img\man\polo-shirt-6.png" />
     <Content Include="Content\img\man\t-shirt-1.png" />
+    <Content Include="Content\img\ministero-della-salute.jpg" />
     <Content Include="Content\img\paypal.jpg" />
+    <Content Include="Content\img\Products\benagol.jpg" />
+    <Content Include="Content\img\Products\benexol.jpg" />
+    <Content Include="Content\img\Products\biotic_forte.jpg" />
+    <Content Include="Content\img\Products\echinaid.jpg" />
+    <Content Include="Content\img\Products\echinaid_urto.jpg" />
+    <Content Include="Content\img\Products\fluimucil.jpg" />
+    <Content Include="Content\img\Products\immunilflor.jpg" />
+    <Content Include="Content\img\Products\moment.jpg" />
+    <Content Include="Content\img\Products\papaya_fermentata.jpg" />
+    <Content Include="Content\img\Products\propolaid.jpg" />
+    <Content Include="Content\img\Products\tachipirinaflash.jpg" />
+    <Content Include="Content\img\Products\tachipirinainfanzia.jpg" />
+    <Content Include="Content\img\Products\voltaren.jpg" />
+    <Content Include="Content\img\Products\xanax.jpg" />
     <Content Include="Content\img\promo-banner-2.jpg" />
     <Content Include="Content\img\promo-banner-5.jpg" />
     <Content Include="Content\img\promo-banner-kids.jpg" />
@@ -281,6 +294,9 @@
     <Content Include="Content\img\slider\3.jpg" />
     <Content Include="Content\img\slider\4.jpg" />
     <Content Include="Content\img\slider\5.jpg" />
+    <Content Include="Content\img\slider\6.jpg" />
+    <Content Include="Content\img\slider\7.jpg" />
+    <Content Include="Content\img\slider\8.jpg" />
     <Content Include="Content\img\slider\ajax-loader.gif" />
     <Content Include="Content\img\slider\bt-next%402x.png" />
     <Content Include="Content\img\slider\bt-next.png" />
@@ -320,36 +336,19 @@
     <Content Include="Content\Intellisence\css\jquery-ui.min.css" />
     <Content Include="Content\Intellisence\js\jquery-1.10.2.min.js" />
     <Content Include="Content\Intellisence\js\jquery-ui.min.js" />
-    <Content Include="Content\js\bootstrap.js" />
-    <Content Include="Content\js\custom.js" />
-    <Content Include="Content\js\jquery.min.js" />
-    <Content Include="Content\js\jquery.simpleGallery.js" />
-    <Content Include="Content\js\jquery.simpleLens.js" />
-    <Content Include="Content\js\jquery.smartmenus.bootstrap.js" />
-    <Content Include="Content\js\jquery.smartmenus.js" />
-    <Content Include="Content\js\jquery.unobtrusive-ajax.min.js" />
-    <Content Include="Content\js\nouislider.js" />
-    <Content Include="Content\js\sequence-theme.modern-slide-in.js" />
-    <Content Include="Content\js\sequence.js" />
-    <Content Include="Content\js\slick.js" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="Global.asax" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\fonts\FontAwesome.otf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\scripts\bootstrap.js" />
+    <Content Include="Content\scripts\custom.js" />
+    <Content Include="Content\scripts\jquery.min.js" />
+    <Content Include="Content\scripts\jquery.simpleGallery.js" />
+    <Content Include="Content\scripts\jquery.simpleLens.js" />
+    <Content Include="Content\scripts\jquery.smartmenus.bootstrap.js" />
+    <Content Include="Content\scripts\jquery.smartmenus.js" />
+    <Content Include="Content\scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Content\scripts\nouislider.js" />
+    <Content Include="Content\scripts\sequence-theme.modern-slide-in.js" />
+    <Content Include="Content\scripts\sequence.js" />
+    <Content Include="Content\scripts\slick.js" />
     <Content Include="Content\scss\base\_base.scss" />
     <Content Include="Content\scss\base\_mixins.scss" />
     <Content Include="Content\scss\base\_variables.scss" />
@@ -361,7 +360,35 @@
     <Content Include="Content\scss\modules\_sections.scss" />
     <Content Include="Content\scss\modules\_typography.scss" />
     <Content Include="Content\scss\style.scss" />
+    <Content Include="Content\styles\bootstrap.css" />
+    <Content Include="Content\styles\font-awesome.css" />
+    <Content Include="Content\styles\jquery.simpleLens.css" />
+    <Content Include="Content\styles\jquery.smartmenus.bootstrap.css" />
+    <Content Include="Content\styles\nouislider.css" />
+    <Content Include="Content\styles\sequence-theme.modern-slide-in.css" />
+    <Content Include="Content\styles\slick.css" />
+    <Content Include="Content\styles\style.css" />
+    <Content Include="Content\styles\theme-color\bridge-theme.css" />
+    <Content Include="Content\styles\theme-color\dark-red-theme.css" />
+    <Content Include="Content\styles\theme-color\default-theme.css" />
+    <Content Include="Content\styles\theme-color\green-theme.css" />
+    <Content Include="Content\styles\theme-color\lite-blue-theme.css" />
+    <Content Include="Content\styles\theme-color\orange-theme.css" />
+    <Content Include="Content\styles\theme-color\pink-theme.css" />
+    <Content Include="Content\styles\theme-color\purple-theme.css" />
+    <Content Include="Content\styles\theme-color\red-theme.css" />
+    <Content Include="Content\styles\theme-color\yellow-theme.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <None Include="Properties\PublishProfiles\marcucci - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\marcucci - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -433,6 +460,12 @@
       <Project>{9e651da2-c26b-4e10-b269-ff4509411df5}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="LocalResource\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -23,33 +23,30 @@ namespace Marcucci
                      "~/Scripts/bootstrap.js",
                      "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/css/font-awesome.css",
-                      "~/Content/css/bootstrap.css",
-                      "~/Content/css/jquery.smartmenus.bootstrap.css",
-                      "~/Content/css/jquery.simpleLens.css",
-                      "~/Content/css/slick.css",
-                      "~/Content/css/nouislider.css",
-                      "~/Content/css/theme-color/lite-blue-theme.css",
-                      "~/Content/css/sequence-theme.modern-slide-in.css",
-                      "~/Content/css/style.css"));
+            bundles.Add(new StyleBundle("~/Content/MyStyles").Include(
+                      "~/Content/styles/font-awesome.css",
+                      "~/Content/styles/bootstrap.css",
+                      "~/Content/styles/jquery.smartmenus.bootstrap.css",
+                      "~/Content/styles/jquery.simpleLens.css",
+                      "~/Content/styles/slick.css",
+                      "~/Content/styles/nouislider.css",
+                      "~/Content/styles/theme-color/lite-blue-theme.css",
+                      "~/Content/styles/sequence-theme.modern-slide-in.css",
+                      "~/Content/styles/style.css"));
 
-            bundles.Add(new ScriptBundle("~/Content/js").Include(
-                   "~/Content/js/jquery.unobtrusive-ajax.min.js",
-                   "~/Content/js/bootstrap.js",
-                   "~/Content/js/jquery.smartmenus.js",
-                   "~/Content/js/jquery.smartmenus.bootstrap.js",
-                   "~/Content/js/sequence.js",
-                   "~/Content/js/sequence-theme.modern-slide-in.js",
-                   "~/Content/js/jquery.simpleGallery.js",
-                   "~/Content/js/jquery.simpleLens.js",
-                   "~/Content/js/slick.js",
-                   "~/Content/js/nouislider.js",
-                   "~/Content/js/custom.js"
+            bundles.Add(new ScriptBundle("~/Content/MyScripts").Include(
+                   "~/Content/scripts/jquery.unobtrusive-ajax.min.js",
+                   "~/Content/scripts/bootstrap.js",
+                   "~/Content/scripts/jquery.smartmenus.js",
+                   "~/Content/scripts/jquery.smartmenus.bootstrap.js",
+                   "~/Content/scripts/sequence.js",
+                   "~/Content/scripts/sequence-theme.modern-slide-in.js",
+                   "~/Content/scripts/jquery.simpleGallery.js",
+                   "~/Content/scripts/jquery.simpleLens.js",
+                   "~/Content/scripts/slick.js",
+                   "~/Content/scripts/nouislider.js",
+                   "~/Content/scripts/custom.js"
                   ));
-
-
-
         }
     }
 }

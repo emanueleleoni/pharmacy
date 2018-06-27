@@ -25,8 +25,9 @@ function defineSequence(imagesLoaded, Hammer) {
    * @param {Object} options - this instance's options
    * @returns {Object} self - Properties and methods available to this instance
    */
-  var Sequence = (function (element, options) {
-
+    var Sequence = (function (element, options) {
+        if (element == null)
+            return;
     var instanceId = element.getAttribute("data-seq-enabled");
 
     // Prevent multiple instances on the same element. Return the object instead

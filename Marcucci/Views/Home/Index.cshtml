@@ -2,6 +2,8 @@
 @{
                 /**/
 
+                /**/
+
                 ViewBag.Title = "Index";
 }
 
@@ -63,7 +65,7 @@
                             <!-- start prduct navigation -->
                             <ul class="nav nav-tabs aa-products-tab">
                                 <li class="active"><a href="#farmaci" data-toggle="tab">FARMACI</a></li>
-                                <li><a href="#nonfarmaci" data-toggle="tab">NON FARMACI</a></li>
+                                <li><a href="#nonfarmaci" data-toggle="tab">ALTRI PRODOTTI</a></li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -73,7 +75,7 @@
                                         <!-- start single product item -->
                                         @if (products.Count > 0)
                                         {
-                                            foreach (var item in products)
+                                            foreach (var item in products.Where(p => p.CategoryID == Guid.Parse("06E0D711-E9A7-4606-81EA-66189D706975")))
                                             {
                                                 { Html.RenderPartial("_Product", item); }
                                             }
@@ -82,6 +84,21 @@
                                     </ul>
                                     <a class="aa-browse-btn" href="#">Tutti i prodotti <span class="fa fa-long-arrow-right"></span></a>
                                 </div>
+                                <div class="tab-pane fade" id="nonfarmaci">
+                                    <ul class="aa-product-catg">
+                                        <!-- start single product item -->
+                                        @if (products.Count > 0)
+                                        {
+                                            foreach (var item in products.Where(p => p.CategoryID != Guid.Parse("06E0D711-E9A7-4606-81EA-66189D706975")))
+                                            {
+                                                { Html.RenderPartial("_Product", item); }
+                                            }
+                                        }
+                                        <!-- end start single product item -->
+                                    </ul>
+                                    <a class="aa-browse-btn" href="#">Tutti i prodotti <span class="fa fa-long-arrow-right"></span></a>
+                                </div>
+
                             </div>
                             <!-- quick view modal -->
                             <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

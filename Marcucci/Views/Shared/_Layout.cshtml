@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dr.Plus | @ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/MyStyles")
 
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/scripts/jquery.min.js"></script>
     <!-- Ad intellisence for searching products-->
 
     <link href="~/Content/Intellisence/css/jquery-ui.min.css" rel="stylesheet" />
@@ -71,7 +71,7 @@
                             </div>
                             <!-- / header top left -->
                             <div class="aa-header-top-right">
-                                @{ 
+                                @{
                                     Html.RenderPartial("_LoginPartial");
                                 }
                             </div>
@@ -91,13 +91,13 @@
                             <div class="aa-logo">
                                 <!-- Text based logo -->
                                 @*<a href="@Url.Action("Index","Home")">
-                                    <span class="fa fa-shopping-cart"></span>
-                                    <p>Khareedo<strong>.pk</strong> <span>Your Shopping Partner</span></p>
-                                </a>*@
+                                        <span class="fa fa-shopping-cart"></span>
+                                        <p>Khareedo<strong>.pk</strong> <span>Your Shopping Partner</span></p>
+                                    </a>*@
                                 <!-- img based logo -->
                                 <a href="@Url.Action("Index","Home")">
                                     <img src="~/Content/img/logo.png" height="54" alt="logo img">
-                                </a> 
+                                </a>
                             </div>
                             <!-- / logo  -->
                             <!-- cart box -->
@@ -109,8 +109,8 @@
                                 </a>
                                 <div class="aa-cartbox-summary">
                                     <ul>
-                                        @{ 
-                                           Html.RenderPartial("_CartBox");
+                                        @{
+                                            Html.RenderPartial("_CartBox");
                                         }
                                     </ul>
                                     <a class="aa-cartbox-checkout aa-primary-btn" href="@Url.Action("Index","CheckOut")">Checkout</a>
@@ -276,10 +276,10 @@
     </footer>
     <!-- / footer -->
 
-    @Scripts.Render("~/Content/js")
+    @Scripts.Render("~/Content/MyScripts")
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
-$(function () {
+        $(function () {
 
             // Initalize modal dialog
             // attach modal-container bootstrap attributes to links with .modal-link class.

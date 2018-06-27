@@ -55,27 +55,114 @@ namespace DAL.Migrations
                 userManager.AddToRole(user.Id, RuoliUtente.consumer);
             }
 
-            if (!context.Categories.Any())
-            {
-                context.Categories.AddRange(
-                new List<Category>() {
-                    new Category {
-                        CategoryID = Guid.NewGuid(),
-                        Description = "Farmaci",
-                        Name = "Farmaci"
-                    },
-                    new Category {
-                        CategoryID = Guid.NewGuid(),
-                        Description = "Altri prodotti",
-                        Name = "Altri prodotti"
-                    }
-                });
-            }
-
             if (!context.Products.Any())
             {
+                // ALTRI PRODOTTI
+                var altri_prodotti = context.Categories.FirstOrDefault(q => q.Name.Equals("Altri prodotti"));
 
+                context.Products.AddRange(
+                    new List<Product>(){
+                        new Product {
+                            ProductID = Guid.NewGuid(),
+                            Category = altri_prodotti,
+                            CategoryID = altri_prodotti.CategoryID,
+                            Code = "papaya",
+                            MarcucciCode = "papaya_fermentata",
+                            Name = "Papaya Fermentata",
+                            Price = 10,
+                            Available = true,
+                            IsDeleted = false,
+                            Quantity = 10,
+                            ImageUrl = "/Content/img/Products/papaya_fermentata.jpg",
+                            ShortDescription = "Papaya Fermentata",
+                            LongDescription = "Papaya Fermentata 60cps blist",
+                            Note = "Assumere con un bicchiere d'acqua"
+                        },
+                        new Product {
+                            ProductID = Guid.NewGuid(),
+                            Category = altri_prodotti,
+                            CategoryID = altri_prodotti.CategoryID,
+                            Code = "echinaid",
+                            MarcucciCode = "echinaid_altapotenza",
+                            Name = "Echinaid Alta Potenza",
+                            Price = 10,
+                            Available = true,
+                            IsDeleted = false,
+                            Quantity = 10,
+                            ImageUrl = "/Content/img/Products/echinaid.jpg",
+                            ShortDescription = "Echinaid Alta Potenza",
+                            LongDescription = "Echinaid Alta Potenza",
+                            Note = "Assumere con un bicchiere d'acqua"
+                        },
+                        new Product {
+                            ProductID = Guid.NewGuid(),
+                            Category = altri_prodotti,
+                            CategoryID = altri_prodotti.CategoryID,
+                            Code = "echinaid_urto",
+                            MarcucciCode = "echinaid_urto",
+                            Name = "Echinaid Urto",
+                            Price = 10,
+                            Available = true,
+                            IsDeleted = false,
+                            Quantity = 10,
+                            ImageUrl = "/Content/img/Products/echinaid_urto.jpg",
+                            ShortDescription = "Echinaid Urto",
+                            LongDescription = "Echinaid Urto 30cps",
+                            Note = "Assumere con un bicchiere d'acqua"
+                        },
+                        new Product {
+                            ProductID = Guid.NewGuid(),
+                            Category = altri_prodotti,
+                            CategoryID = altri_prodotti.CategoryID,
+                            Code = "immunilflor",
+                            MarcucciCode = "immunilflor",
+                            Name = "Immunilflor",
+                            Price = 10,
+                            Available = true,
+                            IsDeleted = false,
+                            Quantity = 10,
+                            ImageUrl = "/Content/img/Products/immunilflor.jpg",
+                            ShortDescription = "Immunilflor",
+                            LongDescription = "Immunilflor 30cps",
+                            Note = "Assumere con un bicchiere d'acqua"
+                        },
+                        new Product {
+                            ProductID = Guid.NewGuid(),
+                            Category = altri_prodotti,
+                            CategoryID = altri_prodotti.CategoryID,
+                            Code = "propolaid_propolgola",
+                            MarcucciCode = "propolaid_propolgola",
+                            Name = "Propolaid Propolgola",
+                            Price = 10,
+                            Available = true,
+                            IsDeleted = false,
+                            Quantity = 10,
+                            ImageUrl = "/Content/img/Products/propolaid.jpg",
+                            ShortDescription = "Propolaid Propolgola",
+                            LongDescription = "Propolaid Propolgola 30cps",
+                            Note = "Succhiare in bocca fino a scioglimento"
+                        },
+                        new Product {
+                            ProductID = Guid.NewGuid(),
+                            Category = altri_prodotti,
+                            CategoryID = altri_prodotti.CategoryID,
+                            Code = "gse_biotic_forte",
+                            MarcucciCode = "gse_biotic_forte",
+                            Name = "GSE Biotic Forte",
+                            Price = 10,
+                            Available = true,
+                            IsDeleted = false,
+                            Quantity = 10,
+                            ImageUrl = "/Content/img/Products/biotic_forte.jpg",
+                            ShortDescription = "GSE Biotic Forte",
+                            LongDescription = "GSE Biotic Forte 2blist x 12cpr",
+                            Note = "Assumere con un bicchiere d'acqua"
+                        },
+                    }
+                );
             }
+
+            context.SaveChanges();
         }
     }
 }
