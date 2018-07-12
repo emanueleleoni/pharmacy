@@ -1,9 +1,10 @@
 ﻿using DAL.Context;
 using DAL.Model;
 using Marcucci.Models;
+using Microsoft.Azure.Devices;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 
 namespace Marcucci.Controllers
@@ -12,6 +13,8 @@ namespace Marcucci.Controllers
     public class CheckOutController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        static ServiceClient serviceClient;
+        static string connectionString = "HostName=pagitamqtt.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=WtlGCPngdldCtoISN0Y4785ErP4sMvimUBOyutIRs2o=";
 
         // GET: CheckOut
         public ActionResult Index()
@@ -64,6 +67,19 @@ namespace Marcucci.Controllers
                 db.TransactionDetails.Add(OD);
                 db.SaveChanges();
             }
+
+            // SEND MESSAGE TO TOTEM
+            //serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
+            //var commandMessage = new Microsoft.Azure.Devices.Message(Encoding.ASCII.GetBytes("Cloud to device message."));
+            //serviceClient.SendAsync("raspberry", commandMessage);
+
+            // Invoke the direct method on the device, passing the payload
+            serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
+            var methodInvocation = new CloudToDeviceMethod("stop") { ResponseTimeout = TimeSpan.FromSeconds(30) };
+            methodInvocation.SetPayloadJson("10");
+
+            // Invoke the direct method asynchronously and get the response from the simulated device.
+            var response = serviceClient.InvokeDeviceMethodAsync("raspberry", methodInvocation);
 
             return RedirectToAction("Index", "ThankYou");
         }

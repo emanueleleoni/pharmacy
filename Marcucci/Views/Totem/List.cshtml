@@ -1,0 +1,35 @@
+﻿@model List<DAL.Model.Stock>
+
+@{
+    Layout = "~/Views/Shared/_Totem.cshtml"; ;
+}
+
+<div class="container list">
+    @{
+        var counter = 1;
+        foreach (var item in Model)
+        {
+            if (counter == 1 || (counter % 4 == 1))
+            {
+                @:<div class="row">
+            }
+            <div class="col-md-3">
+                <a href="/Totem/Purchase/@item.StockID">
+                    <div>
+                        <img src="@item.Product.ImageUrl" alt="@item.Product.Name" />
+                        <p class="name">@item.Product.Name</p>
+                        <p class="description">@item.Product.ShortDescription</p>
+                    </div>
+                    <span class="price">
+                        @item.Product.Price €
+                    </span>
+                </a>                    
+            </div>
+            if (counter % 4 == 0 || counter == Model.Count)
+            {
+                @:</div>
+            }
+            counter++;
+        }
+    }
+</div>

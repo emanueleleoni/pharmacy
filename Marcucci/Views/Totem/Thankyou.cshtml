@@ -1,0 +1,24 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Totem.cshtml";
+}
+
+<div class="switch list">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <h1>GRAZIE PER IL SUO ACQUISTO</h1>
+                <p>EROGAZIONE IN CORSO, ATTENDERE PREGO...</p>
+            </div>
+
+            <a href="/Totem/List" class="btn btn-lg btn-primary btn-block">Continua ad acquistare</a>
+            @using (Html.BeginForm("LogOff", "Account", new { ReturnUrl = "/Totem/Index" }, FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()" class="btn btn-lg btn-danger btn-block">Esci</a>
+            }
+        </div>
+    </div>
+</div>
+
+

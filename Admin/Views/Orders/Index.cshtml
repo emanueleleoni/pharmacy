@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DAL.Model.Transaction>
+@{
+    ViewBag.Title = "Orders";
+}
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ConsumerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CashChannel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taxes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </th>
+
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsumerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CashChannel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Taxes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionDate)
+            </td>
+
+            <td>
+                @Html.ActionLink("View Details", "Details", new { id = item.TransactionID })
+            </td>
+        </tr>
+    }
+</table>

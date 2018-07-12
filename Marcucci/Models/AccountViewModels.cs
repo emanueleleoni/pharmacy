@@ -51,10 +51,15 @@ namespace Marcucci.Models
 
     public class LoginViewModel
     {
-        [Required]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
+
+        [Display(Name = "Rfid")]
+        public string Rfid { get; set; }
+
+        [Display(Name = "Tessera Sanitaria")]
+        public string Cf { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

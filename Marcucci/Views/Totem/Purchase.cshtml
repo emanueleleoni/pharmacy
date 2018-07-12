@@ -1,0 +1,52 @@
+﻿@model DAL.Model.Stock
+
+@{
+    Layout = "~/Views/Shared/_Totem.cshtml";
+}
+
+<script type="text/javascript" src="~/Scripts/jquery.signalR-2.3.0.js"></script>
+<script type="text/javascript" src="/signalr/hubs"></script>
+<script type="text/javascript">
+    $(function () {
+        // Declare a proxy to reference the hub.
+        var notifications = $.connection.messagesHub;
+
+        //debugger;
+        // Create a function that the hub can call to broadcast messages.
+        notifications.client.updateMessages = function () {
+            getAllMessages()
+        };
+        // Start the connection.
+        $.connection.hub.start().done(function () {
+            getAllMessages();
+        }).fail(function (e) {
+            alert(e);
+        });   
+    });
+
+    function getAllMessages() {
+        var payment = $('#payment');
+        $.ajax({
+            url: '/Totem/GetTransactionResult',
+            type: 'GET',            
+        }).success(function (result) {
+            if (result != 'ko')
+                document.location = "/Totem/Thankyou/" + result
+            else 
+                document.location = "/Totem/Error"
+            }).error(function () {
+            });
+    }
+</script>
+
+<div class="switch">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Importo da pagare @Model.Product.Price €</h1>
+            <p>Hai 30 secondi per effettuare il pagamento..</p>
+
+            <a class="btn btn-lg btn-block btn-default" href="javascript:;" onclick="Undo();">Annulla</a>
+        </div>
+    </div>
+</div>
+

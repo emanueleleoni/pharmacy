@@ -10,12 +10,14 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Marcucci.Models;
 using DataAccess;
+using DAL.Context;
 
 namespace Marcucci.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -23,7 +25,7 @@ namespace Marcucci.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -35,9 +37,9 @@ namespace Marcucci.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -72,6 +74,18 @@ namespace Marcucci.Controllers
             if (!ModelState.IsValid)
             {
                 return View(model);
+            }
+
+            // CHECK Model for Rfid & Cf
+            if (!string.IsNullOrEmpty(model.Rfid) || !string.IsNullOrEmpty(model.Cf))
+            {
+                var user = db.Users.FirstOrDefault(q => q.RfId == model.Rfid ||
+                                                        q.CF == model.Cf);
+
+                if (user != null)
+                    model.Email = user.Email;
+                else
+                    return RedirectToAction("Totem", "Index");
             }
 
             // Questa opzione non calcola il numero di tentativi di accesso non riusciti per il blocco dell'account
@@ -121,7 +135,7 @@ namespace Marcucci.Controllers
             // Se un utente immette codici non corretti in un intervallo di tempo specificato, l'account dell'utente 
             // viene bloccato per un intervallo di tempo specificato. 
             // Si possono configurare le impostazioni per il blocco dell'account in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -162,7 +176,7 @@ namespace Marcucci.Controllers
                     var role = await UserManager.AddToRoleAsync(user.Id, RuoliUtente.consumer);
 
                     if (role.Succeeded)
-                        return RedirectToAction("Index", "Home");                    
+                        return RedirectToAction("Index", "Home");
 
                     // Per altre informazioni su come abilitare la conferma dell'account e la reimpostazione della password, vedere https://go.microsoft.com/fwlink/?LinkID=320771
                     // Inviare un messaggio di posta elettronica con questo collegamento
@@ -395,10 +409,14 @@ namespace Marcucci.Controllers
         // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogOff()
+        public ActionResult LogOff(string returnUrl)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+
+            if (string.IsNullOrEmpty(returnUrl))
+                return RedirectToAction("Index", "Home");
+
+            return RedirectToLocal(returnUrl);
         }
 
         //

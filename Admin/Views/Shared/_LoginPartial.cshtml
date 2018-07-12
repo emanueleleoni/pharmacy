@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNet.Identity
+
+<li class="dropdown">
+
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>@User.Identity.GetUserName()<b class="caret"></b></a>
+
+
+    <ul class="dropdown-menu">
+        <li>
+            <a href="@Url.Action("Index","Manage")"><i class="fa fa-fw fa-user"></i> Profilo</a>
+        </li>
+        @*<li>
+                <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Settings")"><i class="fa fa-fw fa-gear"></i> Settings</a>
+            </li>*@
+        <li class="divider"></li>
+        <li>
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <a style="display: block; padding: 3px 20px; clear: both; font-weight: 400; line-height: 1.42857143; color: #333;" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-fw fa-power-off"></i>Disconnetti</a>
+            }
+        </li>
+    </ul>
+</li>

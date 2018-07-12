@@ -88,6 +88,10 @@
     <Compile Include="Migrations\201806261601463_RemoveProduct.Designer.cs">
       <DependentUpon>201806261601463_RemoveProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807061036383_AddMessages.cs" />
+    <Compile Include="Migrations\201807061036383_AddMessages.Designer.cs">
+      <DependentUpon>201807061036383_AddMessages.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DB\Category.cs" />
     <Compile Include="Model\DB\DeletedApplicationUser.cs" />
@@ -97,6 +101,7 @@
     <Compile Include="Model\DB\MachineError.cs" />
     <Compile Include="Model\DB\MachineMessage.cs" />
     <Compile Include="Model\DB\MachineReservation.cs" />
+    <Compile Include="Model\DB\Message.cs" />
     <Compile Include="Model\DB\Product.cs" />
     <Compile Include="Model\DB\ShippingDetail.cs" />
     <Compile Include="Model\DB\Stock.cs" />
@@ -117,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806261601463_RemoveProduct.resx">
       <DependentUpon>201806261601463_RemoveProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807061036383_AddMessages.resx">
+      <DependentUpon>201807061036383_AddMessages.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

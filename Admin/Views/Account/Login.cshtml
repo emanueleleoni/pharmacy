@@ -1,0 +1,81 @@
+﻿@using Admin.Models
+@model LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DrPlus+ | Login</title>
+    @Styles.Render("~/Content/css")
+    <style>
+
+        .adminHeading {
+            font-size: 36px;
+            margin-left: 450px;
+            color: white;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @id = "loginForm", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <h1 class="adminHeading">Admin Panel</h1>
+            <div class="row col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Login To Your Account
+                    </div>
+                    <br />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="panel-body">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <br />
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6 col-xs-6">
+                                <div class="checkbox ">
+                                    <label>
+                                        @Html.CheckBoxFor(m => m.RememberMe, new { id = "login-remember" }) Memorizza Account
+                                     </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-6">
+                                <div class="form-group">
+                                    <div class="pull-right">
+                                        <button type="submit" id="btn-login" class="btn btn-success">Login</button>
+                                    </div><br /><br />
+                                    <div class="pull-right">
+                                        <a href="#" class="small">Forgot password ?</a>
+                                        @* Abilitare questa opzione dopo aver abilitato la conferma dell'account per la funzionalità di reimpostazione della password
+                                            <p>
+                                                @Html.ActionLink("Password dimenticata?", "ForgotPassword")
+                                            </p>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    @Scripts.Render("~/Content/js")
+</body>
+</html>

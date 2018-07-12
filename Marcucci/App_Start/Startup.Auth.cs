@@ -1,13 +1,12 @@
-﻿using System;
+﻿using DAL.Context;
+using DataAccess;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Owin;
+using System;
 using System.Data.Entity;
-using DAL.Context;
-using DataAccess;
 
 namespace Marcucci
 {
