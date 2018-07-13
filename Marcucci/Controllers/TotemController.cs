@@ -143,8 +143,11 @@ namespace Marcucci.Controllers
 
         public ActionResult Thankyou(string id)
         {
-            var transaction = db.Transactions.FirstOrDefault(x => x.TransactionID.ToString() == id);
+            var transaction = db.Transactions.Include("TransactionDetail").FirstOrDefault(x => x.TransactionID.ToString() == id);
             transaction.Status = TransactionStatus.Accepted;
+
+            var stock = db.Stocks.FirstOrDefault(q => q.ProductID == transaction.TransactionDetail.ProductID);
+            stock.Quantity--;
 
             db.SaveChanges();
 

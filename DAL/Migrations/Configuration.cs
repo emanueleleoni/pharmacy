@@ -36,21 +36,21 @@ namespace DAL.Migrations
 
             if (context.Users.All(x => x.UserName != "administrator"))
             {
-                var user = new ApplicationUser() { UserName = "administrator@pagita.com", Email = "administrator@pagita.com", EmailConfirmed = true };
+                var user = new ApplicationUser() { UserName = "administrator@pagita.com", Email = "administrator@pagita.com", EmailConfirmed = true, UserType = ApplicationUserType.Administrator };
                 userManager.Create(user, "Password1");
                 userManager.AddToRole(user.Id, RuoliUtente.admin);
             }
 
             if (context.Users.All(x => x.UserName != "consumer1"))
             {
-                var user = new ApplicationUser() { UserName = "consumer1@pagita.com", Email = "consumer1@pagita.com", EmailConfirmed = true };
+                var user = new ApplicationUser() { UserName = "consumer1@pagita.com", Email = "consumer1@pagita.com", EmailConfirmed = true, UserType = ApplicationUserType.Consumer };
                 userManager.Create(user, "Password1");
                 userManager.AddToRole(user.Id, RuoliUtente.consumer);
             }
 
             if (context.Users.All(x => x.UserName != "consumer2"))
             {
-                var user = new ApplicationUser() { UserName = "consumer2@pagita.com", Email = "consumer2@pagita.com", EmailConfirmed = true };
+                var user = new ApplicationUser() { UserName = "consumer2@pagita.com", Email = "consumer2@pagita.com", EmailConfirmed = true, UserType = ApplicationUserType.Consumer };
                 userManager.Create(user, "Password1");
                 userManager.AddToRole(user.Id, RuoliUtente.consumer);
             }

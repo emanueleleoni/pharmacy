@@ -106,6 +106,7 @@ namespace Marcucci.Models
         public string CompanyName { get; set; }
         public string VAT { get; set; }
         public string Address { get; set; }
+        public string CF { get; set; }
 
         public string City { get; set; }
 
@@ -125,6 +126,7 @@ namespace Marcucci.Models
             this.PhoneNumber = user.PhoneNumber;
             this.VAT = user.VAT;
             this.Agreement = user.Agreement;
+            this.CF = user.CF;
         }
     }
 

@@ -1,0 +1,53 @@
+﻿@model DAL.Model.Stock
+
+@{
+    ViewBag.Title = "Totem";
+    ViewBag.SubTitle = "Delete";
+}
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.MarcucciCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.MarcucciCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineKeyBoardNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MachineKeyBoardNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-primary" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

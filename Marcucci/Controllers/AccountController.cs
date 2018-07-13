@@ -79,8 +79,8 @@ namespace Marcucci.Controllers
             // CHECK Model for Rfid & Cf
             if (!string.IsNullOrEmpty(model.Rfid) || !string.IsNullOrEmpty(model.Cf))
             {
-                var user = db.Users.FirstOrDefault(q => q.RfId == model.Rfid ||
-                                                        q.CF == model.Cf);
+                var user = db.Users.FirstOrDefault(q => (q.RfId != null && q.RfId == model.Rfid) ||
+                                                        (q.CF != null && q.CF == model.Cf));
 
                 if (user != null)
                     model.Email = user.Email;
@@ -166,7 +166,7 @@ namespace Marcucci.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, UserType = ApplicationUserType.Consumer, CF = model.CF };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>DrPlus+ | @ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/MyStyles")
     <style>
         .page-header {
             padding-bottom: 5px;
@@ -142,6 +142,9 @@
                     <li class="@(ViewBag.Title == "Products" ? "active" : "")">
                         <a href="@Url.Action("Index", "Products")"><i class="fa fa-fw fa-table"></i> Product</a>
                     </li>
+                    <li class="@(ViewBag.Title == "Totem" ? "active" : "")">
+                        <a href="@Url.Action("Index", "Stocks")"><i class="fa fa-fw fa-hospital-o"></i> Totem</a>
+                    </li>
                     <li class="@(ViewBag.Title == "Customers" ? "active" : "")">
                         <a href="@Url.Action("AllUsers", "Manage")"><i class="fa fa-fw fa-male"></i> Customer</a>
                     </li>
@@ -189,7 +192,7 @@
     <!-- /#wrapper -->
     <!-- jQuery -->
     <!-- jQuery and Bootstrap Core JavaScript -->
-    @Scripts.Render("~/Content/js")
+    @Scripts.Render("~/Content/MyScripts")
     @RenderSection("scripts", required: false)
 
 </body>

@@ -1,0 +1,47 @@
+﻿@model DAL.Model.Stock
+
+@{
+    ViewBag.Title = "Totem";
+    ViewBag.SubTitle = "Details";
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Machine.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Machine.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.MarcucciCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.MarcucciCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MachineKeyBoardNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MachineKeyBoardNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StockID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

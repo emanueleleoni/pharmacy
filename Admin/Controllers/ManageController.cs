@@ -344,6 +344,25 @@ namespace Admin.Controllers
             return View(db.Users.Where(x => x.UserType == ApplicationUserType.Consumer && x.IsDeleted == false).ToList());
         }
 
+        public virtual ActionResult UserEdit(string id)
+        {
+            var user = db.Users.Where(x => x.Id == id).First();
+
+            return View(user);
+        }
+
+        [HttpPost]
+        public virtual ActionResult UserEdit(ApplicationUser model)
+        {
+            var user = db.Users.Where(x => x.Id == model.Id).First();
+
+            TryUpdateModel(user);
+
+            db.SaveChanges();
+
+            return RedirectToAction("AllUsers");
+        }
+
         public virtual ActionResult UserDetail(string id)
         {
             var user = db.Users.Where(x => x.Id == id).First();

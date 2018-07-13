@@ -23,12 +23,12 @@ namespace Admin
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/MyStyles").Include(
                       "~/Content/css/bootstrap.min.css",
                       "~/Content/css/sb-admin.css",
                       "~/Content/font-awesome/css/font-awesome.min.css"));
 
-            bundles.Add(new ScriptBundle("~/Content/js").Include(
+            bundles.Add(new ScriptBundle("~/Content/MyScripts").Include(
               "~/Content/js/jquery.js",
               "~/Content/js/bootstrap.min.js",
               "~/Content/js/MyCustom.js"

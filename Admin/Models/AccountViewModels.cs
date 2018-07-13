@@ -110,6 +110,7 @@ namespace Admin.Models
 
         [Display(Name = "Agreement")]
         public string Agreement { get; set; }
+        public string CF { get; set; }
 
         public RegisterViewModel() { }
 
@@ -124,6 +125,7 @@ namespace Admin.Models
             this.PhoneNumber = user.PhoneNumber;
             this.VAT = user.VAT;
             this.Agreement = user.Agreement;
+            this.CF = user.CF;
         }
     }
 
