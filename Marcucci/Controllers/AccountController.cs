@@ -76,21 +76,9 @@ namespace Marcucci.Controllers
                 return View(model);
             }
 
-            // CHECK Model for Rfid & Cf
-            if (!string.IsNullOrEmpty(model.Rfid) || !string.IsNullOrEmpty(model.Cf))
-            {
-                var user = db.Users.FirstOrDefault(q => (q.RfId != null && q.RfId == model.Rfid) ||
-                                                        (q.CF != null && q.CF == model.Cf));
-
-                if (user != null)
-                    model.Email = user.Email;
-                else
-                    return RedirectToAction("Totem", "Index");
-            }
-
             // Questa opzione non calcola il numero di tentativi di accesso non riusciti per il blocco dell'account
             // Per abilitare il conteggio degli errori di password per attivare il blocco, impostare shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.Cf, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -166,13 +154,13 @@ namespace Marcucci.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, UserType = ApplicationUserType.Consumer, CF = model.CF };
+                var user = new ApplicationUser { UserName = model.CF, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName, PhoneNumber = model.PhoneNumber, UserType = ApplicationUserType.Consumer, CF = model.CF, Birthdate = model.BirthDate };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    user = await UserManager.FindByNameAsync(model.Email);
+                    user = await UserManager.FindByNameAsync(model.CF);
                     var role = await UserManager.AddToRoleAsync(user.Id, RuoliUtente.consumer);
 
                     if (role.Succeeded)

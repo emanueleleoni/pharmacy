@@ -43,26 +43,23 @@ namespace Marcucci.Models
     public class ProfileViewModel
     {
         [Required]
-        [Display(Name = "Name")]
+        [Display(Name = "Nome")]
 
         public string FirstName { get; set; }
 
         [Required]
         //[Display(Name = "Last Name")]
-        [Display(Name = "Surname")]
+        [Display(Name = "Cognome")]
         public string LastName { get; set; }
 
-        [Display(Name = "CompanyName")]
+        [Display(Name = "Azienda")]
         public string CompanyName { get; set; }
 
-        [Display(Name = "Address")]
+        [Display(Name = "Indirizzo")]
         public string Address { get; set; }
 
-        [Display(Name = "City")]
+        [Display(Name = "Città")]
         public string City { get; set; }
-
-        [Display(Name = "Credit")]
-        public double Credit { get; set; }
 
         [Display(Name = "VAT")]
         public string VAT { get; set; }
@@ -70,20 +67,11 @@ namespace Marcucci.Models
         [Display(Name = "UserType")]
         public ApplicationUserType UserType { get; set; }
 
-        [Display(Name = "Sugar Option")]
-        public int SugarOption { get; set; }
-
-        [Display(Name = "PhoneNumber")]
+        [Display(Name = "Mobile")]
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Email")]
         public string Email { get; set; }
-
-        [Display(Name = "AuthorizeUserProfiling")]
-        public bool AuthorizeUserProfiling { get; set; }
-
-        [Display(Name = "AuthorizeGeoPromotions")]
-        public bool AuthorizeGeoRefPromotions { get; set; }
     }
 
     public class ChangePasswordViewModel

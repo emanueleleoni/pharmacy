@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.Azure.Devices;
 using System;
 using System.Linq;
+using System.Text;
 using System.Web.Mvc;
 
 namespace Marcucci.Controllers
@@ -41,10 +42,11 @@ namespace Marcucci.Controllers
 
             // Invoke the direct method on the device, passing the payload
             serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
-            var methodInvocation = new CloudToDeviceMethod("GetRfid") { ResponseTimeout = TimeSpan.FromSeconds(30) };
 
             // Invoke the direct method asynchronously and get the response from the simulated device.
-            var response = serviceClient.InvokeDeviceMethodAsync("raspberry", methodInvocation);
+            var getRfidMessage = new Microsoft.Azure.Devices.Message(Encoding.ASCII.GetBytes("{ \"Method\": \"GetRfid\" }"));
+            serviceClient.SendAsync("raspberry", getRfidMessage);
+
             return View();
         }
 
@@ -124,11 +126,10 @@ namespace Marcucci.Controllers
 
             // Invoke the direct method on the device, passing the payload
             serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
-            var methodInvocation = new CloudToDeviceMethod("Purchase") { ResponseTimeout = TimeSpan.FromSeconds(30) };
-            methodInvocation.SetPayloadJson("{ \"transactionid\": \""+ transaction.TransactionID + "\", \"total\": \"" + stock.Product.Price + "\", \"selection\": \"" + stock.MachineKeyBoardNumber + "\" }");
 
             // Invoke the direct method asynchronously and get the response from the simulated device.
-            var response = serviceClient.InvokeDeviceMethodAsync("raspberry", methodInvocation);
+            var getRfidMessage = new Microsoft.Azure.Devices.Message(Encoding.ASCII.GetBytes("{ \"Method\": \"Purchase\", \"transactionid\": \"" + transaction.TransactionID + "\", \"total\": \"" + stock.Product.Price + "\", \"selection\": \"" + stock.MachineKeyBoardNumber + "\" }"));
+            serviceClient.SendAsync("raspberry", getRfidMessage);
 
             return View(stock);
         }

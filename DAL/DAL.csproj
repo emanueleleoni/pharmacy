@@ -92,6 +92,14 @@
     <Compile Include="Migrations\201807061036383_AddMessages.Designer.cs">
       <DependentUpon>201807061036383_AddMessages.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807231024349_AddAdult.cs" />
+    <Compile Include="Migrations\201807231024349_AddAdult.Designer.cs">
+      <DependentUpon>201807231024349_AddAdult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807231100332_AddBirthdate.cs" />
+    <Compile Include="Migrations\201807231100332_AddBirthdate.Designer.cs">
+      <DependentUpon>201807231100332_AddBirthdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DB\Category.cs" />
     <Compile Include="Model\DB\DeletedApplicationUser.cs" />
@@ -125,6 +133,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807061036383_AddMessages.resx">
       <DependentUpon>201807061036383_AddMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807231024349_AddAdult.resx">
+      <DependentUpon>201807231024349_AddAdult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807231100332_AddBirthdate.resx">
+      <DependentUpon>201807231100332_AddBirthdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web;
@@ -74,20 +75,17 @@ namespace Marcucci.Models
     {
         [Required]
 
-        [Display(Name = "Name")]
+        [Display(Name = "Nome")]
         public string FirstName { get; set; }
 
         [Required]
 
-        [Display(Name = "Surname")]
+        [Display(Name = "Cognome")]
         public string LastName { get; set; }
 
-        [Required]
-
-        [Display(Name = "Phone")]
+        [Display(Name = "Mobile")]
         public string PhoneNumber { get; set; }
 
-        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -99,14 +97,23 @@ namespace Marcucci.Models
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "ConfirmPassword")]
+        [Display(Name = "Conferma Password")]
         [Compare("Password", ErrorMessageResourceName = "ErrorThePasswordAndConfirmation", ErrorMessageResourceType = typeof(LocalResource.Resource))]
         public string ConfirmPassword { get; set; }
 
         public string CompanyName { get; set; }
         public string VAT { get; set; }
         public string Address { get; set; }
+        
+        [Required]
+        [Display(Name = "Tessera Sanitaria")]
         public string CF { get; set; }
+
+        [Required]
+        [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        [Display(Name = "Data di nascita")]
+        public DateTime BirthDate { get; set; }
 
         public string City { get; set; }
 
@@ -127,6 +134,7 @@ namespace Marcucci.Models
             this.VAT = user.VAT;
             this.Agreement = user.Agreement;
             this.CF = user.CF;
+            this.BirthDate = user.Birthdate;
         }
     }
 

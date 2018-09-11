@@ -7,6 +7,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Marcucci.Models;
+using DAL.Context;
+using System.Collections.Generic;
+using DAL.Model;
 
 namespace Marcucci.Controllers
 {
@@ -239,6 +242,103 @@ namespace Marcucci.Controllers
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);
+            return View(model);
+        }
+
+        // GET: /Manage/SetProfile
+        public virtual ActionResult SetProfile()
+        {
+            ProfileViewModel model = new ProfileViewModel();
+
+            var currentUserID = User.Identity.GetUserId();
+
+            using (var _context = new ApplicationDbContext())
+            {
+
+                var currentUserProfile = _context.Users.FirstOrDefault(x => x.Id == currentUserID);
+
+                model.Address = currentUserProfile.Address;
+
+                model.City = currentUserProfile.City;
+
+                model.CompanyName = currentUserProfile.CompanyName;
+
+                model.FirstName = currentUserProfile.FirstName;
+
+                model.VAT = currentUserProfile.VAT;
+
+                model.LastName = currentUserProfile.LastName;
+
+                model.PhoneNumber = currentUserProfile.PhoneNumber;
+
+                model.Email = currentUserProfile.Email;
+            }
+
+            return View(model);
+        }
+
+        // POST: /Manage/SetProfile
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult SetProfile(ProfileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var id = User.Identity.GetUserId();
+
+                using (var _context = new ApplicationDbContext())
+                {
+                    var user = _context.Users.FirstOrDefault(x => x.Id == id);
+                    if (user != null)
+                    {
+                        user.Address = model.Address;
+                        user.City = model.City;
+                        user.CompanyName = model.CompanyName;
+                        user.FirstName = model.FirstName;
+                        user.VAT = model.VAT;
+                        user.LastName = model.LastName;
+                        user.PhoneNumber = model.PhoneNumber;
+                        if (!String.IsNullOrEmpty(model.Address) &&
+                            !String.IsNullOrEmpty(model.City) &&
+                            !String.IsNullOrEmpty(model.PhoneNumber))
+                            user.IsProfileCompleted = true;
+                        _context.SaveChanges();
+                        ViewBag.Result = "Profile Saved!";
+                    }
+                }
+            }
+            else
+                ModelState.AddModelError("", "Error in validation");
+
+            return View(model);
+        }
+
+        public virtual ActionResult Orders()
+        {
+            var model = new List<Transaction>();
+
+            var currentUserID = User.Identity.GetUserId();
+
+            using (var _context = new ApplicationDbContext())
+            {
+                var currentUserProfile = _context.Users.FirstOrDefault(x => x.Id == currentUserID);
+                model = _context.Transactions.Where(q => q.ConsumerID == currentUserProfile.CF &&
+                                                         q.Status == TransactionStatus.Accepted)
+                                             .ToList();
+            }
+
+            return View(model);
+        }
+
+        public virtual ActionResult OrderDetails(string id)
+        {
+            var model = new Transaction();
+
+            using (var _context = new ApplicationDbContext())
+            {
+                model = _context.Transactions.Include("TransactionDetail").FirstOrDefault(q => q.TransactionID.ToString() == id);
+            }
+
             return View(model);
         }
 

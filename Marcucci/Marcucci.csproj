@@ -497,6 +497,9 @@
     <Content Include="Views\Totem\Rfid.cshtml" />
     <Content Include="Views\Totem\Purchase.cshtml" />
     <Content Include="Views\Totem\Thankyou.cshtml" />
+    <Content Include="Views\Manage\SetProfile.cshtml" />
+    <Content Include="Views\Manage\Orders.cshtml" />
+    <Content Include="Views\Manage\OrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

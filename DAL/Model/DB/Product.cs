@@ -34,6 +34,8 @@ namespace DAL.Model
 
         public string Note { get; set; }
 
+        public bool ForAdult { get; set; }
+
         // Un prodotto appartiene ad una categoria
         public Guid CategoryID { get; set; }
         public Category Category { get; set; }

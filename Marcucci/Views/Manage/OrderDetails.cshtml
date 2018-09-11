@@ -1,0 +1,128 @@
+﻿@model DAL.Model.Transaction
+
+@{
+    ViewBag.Title = "Dettaglio Ordine";
+}
+
+<h2>OrderDetails</h2>
+
+<div>
+    <h4>Transaction</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDetail.TransactionDetailID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDetail.TransactionDetailID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Taxes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taxes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConsumerID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConsumerID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CashChannel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CashChannel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ErrorID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ErrorID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shipped)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shipped)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShippingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShippingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delivered)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delivered)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
